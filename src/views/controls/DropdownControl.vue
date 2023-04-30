@@ -3,6 +3,7 @@
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
+            v-if="!fetchingData"
             :multiple="this.control.multiple"
     >
         <!-- placeholder -->
@@ -39,7 +40,7 @@
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
         data: () => ({
             listOptions: [],
-
+            fetchingData: false,
             dataMode: "",
             apiURL: "",
         }),
@@ -87,6 +88,8 @@
                     throw new TypeError("[Dropdown] Rest-API Endpoint must be valid http/https URL.");
                 }
 
+                this.fetchingData = true;
+
                 // ok retrieve now
                 fetch(this.control.apiURL, {
                     method: "GET"
@@ -117,6 +120,9 @@
                         )
                     );
                 });
+                setTimeout(() => {
+                    this.fetchingData = false;
+                }, 500);
             },
 
             /**
@@ -124,6 +130,7 @@
              * Show error for dropdown.
              */
             restAPICallErrorHandling(e) {
+                this.fetchingData = false;
                 console.error(`[DROPDOWN-Control-${this.control.uniqueId}] Request API to get data failed.`, e);
             },
         },
