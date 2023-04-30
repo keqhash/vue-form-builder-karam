@@ -3,7 +3,7 @@
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
-            v-if="false"
+            v-if="!fetchingData"
             :multiple="this.control.multiple"
     >
         <!-- placeholder -->
