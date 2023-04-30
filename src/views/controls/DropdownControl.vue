@@ -3,22 +3,25 @@
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
             @input="updateValue($event.target.value)"
-            v-if="!fetchingData"
+            :key="listOptions.length"
             :multiple="this.control.multiple"
     >
         <!-- placeholder -->
         <option disabled
-                selected
+                :selected="!value || !listOptions.length"
                 v-text="control.placeholderText"
                 v-if="control.placeholderText"
         ></option>
+        <option disabled
+            v-if="!listOptions.length"
+        >Getting Data...</option>
 
         <!-- list rendering -->
         <option v-for="optionObj in listOptions"
                 :key="optionObj.value"
                 :value="optionObj.value"
                 v-text="optionObj.text"
-                :selected="value === optionObj.value"
+                :selected="value == optionObj.value"
         ></option>
     </select>
 </template>
@@ -44,7 +47,6 @@
             dataMode: "",
             apiURL: "",
         }),
-
         watch: {
             control: {
                 deep: true,
@@ -88,10 +90,14 @@
                     throw new TypeError("[Dropdown] Rest-API Endpoint must be valid http/https URL.");
                 }
 
-                this.fetchingData = true;
+                let endAPI = this.control.apiURL;
+
+                // if (this.control.apiURL.indexOf('{domain}') > -1) {
+                //     endAPI = this.control.apiURL.replace('{domain}', `http://${this.baseURL}`)
+                // }
 
                 // ok retrieve now
-                fetch(this.control.apiURL, {
+                fetch(endAPI, {
                     method: "GET"
                 }).then(result => result.json())
                   .then(this.afterRestAPICallDataSuccessfully)
@@ -120,9 +126,6 @@
                         )
                     );
                 });
-                setTimeout(() => {
-                    this.fetchingData = false;
-                }, 500);
             },
 
             /**
