@@ -23,6 +23,7 @@ const CONFIGURATION = {
             type: Boolean,
             default: () => false,
         },
+        baseURL: null
     },
 
     watch: {

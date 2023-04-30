@@ -25,6 +25,7 @@
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
+                :baseURL="baseURL || ''"
             />
         </form>
         <template v-else>
@@ -43,6 +44,7 @@
                 :controls="formData.controls"
                 :key="sectionData.uniqueId"
                 :value-container="valueContainer"
+                :baseURL="baseURL || ''"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"
             />

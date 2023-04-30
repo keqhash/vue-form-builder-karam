@@ -2,13 +2,13 @@
     <select :id="control.uniqueId"
             :class="controlFieldClass"
             :name="control.name || control.uniqueId"
-            @input="updateValue($event.target.value)"
+            @change="onChange($event, control.multiple)"
             :key="listOptions.length"
-            :multiple="this.control.multiple"
+            :multiple="control.multiple"
     >
         <!-- placeholder -->
         <option disabled
-                :selected="!value || !listOptions.length"
+                :selected="!value || !value.length || !listOptions.length"
                 v-text="control.placeholderText"
                 v-if="control.placeholderText"
         ></option>
@@ -21,7 +21,7 @@
                 :key="optionObj.value"
                 :value="optionObj.value"
                 v-text="optionObj.text"
-                :selected="value == optionObj.value"
+                :selected="value == optionObj.value || (Array.isArray(value) && value.indexOf(optionObj.value) > -1) ? 'selected' : ''"
         ></option>
     </select>
 </template>
@@ -68,8 +68,13 @@
                 },
             },
         },
-
         methods: {
+            onChange(event, isMultiple) {
+                const selectedValue = isMultiple ? [...event.target.options]
+                    .filter(option => option.selected)
+                    .map(option => option.value) : event.target.value;
+                this.updateValue(selectedValue);
+            },
             retrieveOptionLists() {
                 this.dataMode = this.control.dataMode;
                 this.apiURL = this.control.apiURL;
@@ -85,16 +90,19 @@
                     throw new TypeError("[Dropdown] In order to use REST-API for Dropdown. You must set your Rest-API Endpoint.");
                 }
 
-                // is it http/https?
-                if (this.control.apiURL.indexOf("http://") < 0 && this.control.apiURL.indexOf("https://") < 0) {
-                    throw new TypeError("[Dropdown] Rest-API Endpoint must be valid http/https URL.");
+                let endAPI = this.control.apiURL;
+                if (this.control.apiURL.indexOf('{domain}') > -1) {
+                    endAPI = this.control.apiURL.replace('{domain}', this.baseURL)
                 }
 
-                let endAPI = this.control.apiURL;
-
-                // if (this.control.apiURL.indexOf('{domain}') > -1) {
-                //     endAPI = this.control.apiURL.replace('{domain}', `http://${this.baseURL}`)
-                // }
+                endAPI = endAPI.replace(
+                /http:\/\/\{getProvidersAPI\}/g,
+                `${this.baseURL}providers-basic-info`
+              )
+              .replace(
+                /http:\/\/\{getManagersAPI\}/g,
+                `${this.baseURL}/managers-basic-info`
+              )
 
                 // ok retrieve now
                 fetch(endAPI, {

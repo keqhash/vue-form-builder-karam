@@ -18,6 +18,7 @@
             <ControlView v-for="controlId in section.controls"
                          :key="controlId"
                          :control="controls[controlId]"
+                         :baseURL="baseURL"
                          :parent-id="section.uniqueId"
                          :permissions="permissions"
             />

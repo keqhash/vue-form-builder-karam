@@ -38,6 +38,7 @@ const ROW_VIEW_MIXIN = {
             type: Object,
             required: true,
         },
+        baseURL: String,
 
         permissions: Object
     },

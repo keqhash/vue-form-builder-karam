@@ -29,6 +29,7 @@
                     :key="controlId"
                     :control="controls[controlId]"
                     :parent-id="section.uniqueId"
+                    :baseURL="baseURL"
                     :value-container="valueContainer"
                     :validation-errors="validationErrors"
                     :read-only="readOnly"

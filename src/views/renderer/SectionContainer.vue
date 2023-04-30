@@ -7,6 +7,7 @@
             :controls="controls"
             :key="section.uniqueId"
             :value-container="valueContainer"
+            :baseURL="baseURL"
             :validation-errors="validationErrors"
             :read-only="readOnly"
         />
@@ -26,6 +27,7 @@
             valueContainer: Object,
             validationErrors: Object,
             readOnly: Boolean,
+            baseURL: String,
         },
 
         computed: {

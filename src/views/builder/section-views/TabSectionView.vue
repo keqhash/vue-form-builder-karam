@@ -48,6 +48,7 @@
                     v-for="rowId in section.rows"
                     :key="rowId"
                     :row="rows[rowId]"
+                    :baseURL="baseURL"
                     :section="section"
                     :controls="controls"
                     :permissions="permissions"

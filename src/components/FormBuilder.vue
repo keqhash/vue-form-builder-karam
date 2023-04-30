@@ -17,6 +17,7 @@
             v-for="(sectionData) in sortedSections"
             :section="sectionData"
             :rows="formData.rows"
+            :baseURL="baseURL || ''"
             :controls="formData.controls"
             :key="sectionData.uniqueId"
             :permissions="permissions"
@@ -44,7 +45,6 @@
 
 <script>
     import AddSectionControl from "@/views/builder/add-controls/AddSectionControl";
-    import {MAIN_CONSTANTS} from "@/configs";
     import SectionContainer from "@/views/builder/SectionContainer";
     import FormBuilderBusiness from "@/mixins/form-builder-mixins";
     import FormConfiguration from "@/views/builder/FormConfiguration";
@@ -69,7 +69,8 @@
                 default: () => {
                     return DefaultPermission
                 }
-            }
+            },
+            baseURL: null,
         },
 
         data: () => ({
@@ -88,15 +89,5 @@
                 this.createDefaultData()
             }
         },
-
-        computed: {
-            /**
-             * Copyright Text
-             * @returns {string}
-             */
-            copyrightText() {
-                return MAIN_CONSTANTS.COPYRIGHT
-            }
-        }
     }
 </script>

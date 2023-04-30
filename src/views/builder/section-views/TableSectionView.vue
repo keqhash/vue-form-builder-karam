@@ -11,6 +11,7 @@
 
                 <TableRowView v-for="(rowId) in section.rows"
                               :key="rowId"
+                              :baseURL="baseURL"
                               :section="section"
                               :row="rows[rowId]" />
 

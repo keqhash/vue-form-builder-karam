@@ -23,6 +23,7 @@
                 v-for="controlId in row.controls"
                 :key="controlId"
                 :control="controls[controlId]"
+                :baseURL="baseURL"
                 :parent-id="row.uniqueId"
                 :permissions="permissions"
             />

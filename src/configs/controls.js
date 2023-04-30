@@ -230,7 +230,7 @@ const CONTROLS = {
         name: "Label",
         description: "Simple label text show up in your Form",
         disableValue: true,
-        
+
         configData: {
             forAttribute: null, // `for` for any control? (except the Label)
 

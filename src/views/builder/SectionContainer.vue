@@ -11,6 +11,7 @@
             :is="sectionViewComponent"
             :section="section"
             :rows="rows"
+            :baseURL="baseURL"
             :controls="controls"
             :key="section.uniqueId"
             :permissions="permissions"
@@ -29,7 +30,8 @@
             section: Object,
             rows: Object,
             controls: Object,
-            permissions: Object
+            permissions: Object,
+            baseURL: String
         },
         data: () => ({
             isDoingConfiguration: false

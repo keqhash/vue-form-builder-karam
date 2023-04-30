@@ -37,6 +37,7 @@
                     :row="rows[rowId]"
                     :section="section"
                     :controls="controls"
+                    :baseURL="baseURL"
                     :value-container="valueContainer"
                     :validation-errors="validationErrors"
                     :read-only="readOnly"

@@ -7,6 +7,7 @@
 
             <!-- render the exact field -->
             <component :is="controlComponent"
+                        :baseURL="baseURL"
                        :control="control"
             />
 
@@ -43,7 +44,8 @@
                 type: String,
                 required: true,
             },
-            permissions: Object
+            permissions: Object,
+            baseURL: String
         },
 
         data: () => ({

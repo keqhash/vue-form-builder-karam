@@ -6,7 +6,7 @@
                 :key="controlId"
                 :control="controls[controlId]"
                 :parent-id="row.uniqueId"
-
+                :baseURL="baseURL"
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"
                 :read-only="readOnly"

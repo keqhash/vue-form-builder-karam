@@ -10,6 +10,7 @@
                 v-for="controlId in section.controls"
                 :key="controlId"
                 :control="controls[controlId]"
+                :baseURL="baseURL"
                 :parent-id="section.uniqueId"
                 :value-container="valueContainer"
                 :validation-errors="validationErrors"

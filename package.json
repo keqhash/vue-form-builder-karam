@@ -1,6 +1,6 @@
 {
   "name": "v-form-builder-karam",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "description": "Vue Form Builder PRO MAX built from top of Vue. Super dynamic and flexible including Drag and Drop feature.",
   "author": {
@@ -58,10 +58,10 @@
     "vuejs",
     "form builder",
     "drag & drop",
-    "seth phat"
+    "karam eqhash"
   ],
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/sethsandaru/vue-form-builder.git"
+    "url": "https://github.com/keqhash/vue-form-builder-karam"
   }
 }

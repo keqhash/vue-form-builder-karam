@@ -13,6 +13,7 @@
                 v-if="!readOnly"
                 v-model="valueContainer[controlName]"
                 :is="controlComponent"
+                :baseURL="baseURL"
                 :control="control"
                 :value-container="valueContainer"
                 :class="validationErrorClasses"
@@ -64,6 +65,7 @@
               type: Boolean,
               default: false,
             },
+            baseURL: String,
         },
 
         computed: {

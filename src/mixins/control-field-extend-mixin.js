@@ -18,6 +18,8 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
 
         // v-model value
         value: null, // any types
+
+        baseURL: null,
     },
 
     // global data-field - available to override
