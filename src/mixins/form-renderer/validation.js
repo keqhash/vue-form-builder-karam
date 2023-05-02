@@ -93,6 +93,7 @@ const VALIDATION_MIXIN = {
         )
 
         // listen to validation invoke
+        this.$formEvent._events['renderer.run_validation'] = [];
         this.$formEvent.$on(EVENT_CONSTANTS.RENDERER.RUN_VALIDATION, this.runValidation);
     },
 

@@ -21,7 +21,7 @@
                 :key="optionObj.value"
                 :value="optionObj.value"
                 v-text="optionObj.text"
-                :selected="value == optionObj.value || (Array.isArray(value) && value.indexOf(`${optionObj.value}`) > -1) ? 'selected' : ''"
+                :selected="`${value}` == `${optionObj.value}` || (Array.isArray(value) && value.map((item) => `${item}`).indexOf(`${optionObj.value}`) > -1) ? 'selected' : ''"
         ></option>
     </select>
 </template>
