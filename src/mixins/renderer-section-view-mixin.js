@@ -15,7 +15,7 @@ const RENDERER_SECTION_VIEW_MIXIN = {
         valueContainer: Object,
         validationErrors: Object,
         readOnly: Boolean,
-        baseURL: String
+        baseURL: String,
     },
 
     data: () => ({

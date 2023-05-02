@@ -45,7 +45,7 @@
                 required: true,
             },
             permissions: Object,
-            baseURL: String
+            baseURL: String,
         },
 
         data: () => ({

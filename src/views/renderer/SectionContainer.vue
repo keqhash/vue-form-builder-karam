@@ -29,7 +29,6 @@
             readOnly: Boolean,
             baseURL: String,
         },
-
         computed: {
             sectionViewComponent() {
                 return SECTION_TYPES[this.section.type].rendererView

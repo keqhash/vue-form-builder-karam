@@ -22,7 +22,7 @@ const SECTION_VIEW_MIXINS = {
         rows: Object,
         controls: Object,
         permissions: Object,
-        baseURL: String
+        baseURL: String,
     },
 
     data: () => ({

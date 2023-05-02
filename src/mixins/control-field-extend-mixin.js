@@ -55,6 +55,14 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
 
+        promiseStarted(name) {
+            this.$formEvent.$emit('promise_start', name);
+        },
+
+        promiseEnded(name) {
+            this.$formEvent.$emit('promise_end', name);
+        },
+
         /**
          * Need-To-Override Method - Set Value.
          * Set value from parent to the current field/control

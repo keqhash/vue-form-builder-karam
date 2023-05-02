@@ -43,7 +43,6 @@
         mixins: [CONTROL_FIELD_EXTEND_MIXIN],
         data: () => ({
             listOptions: [],
-            fetchingData: false,
             dataMode: "",
             apiURL: "",
         }),
@@ -92,7 +91,7 @@
 
                 let endAPI = this.control.apiURL;
                 if (this.control.apiURL.indexOf('{domain}') > -1) {
-                    endAPI = this.control.apiURL.replace('{domain}', this.baseURL)
+                    endAPI = this.control.apiURL.replace('{domain}', this.baseURL);
                 }
 
                 endAPI = endAPI.replace(
@@ -103,6 +102,8 @@
                 /http:\/\/\{getManagersAPI\}/g,
                 `${this.baseURL}/managers-basic-info`
               )
+
+              this.promiseStarted('dropdown-api');
 
                 // ok retrieve now
                 fetch(endAPI, {
@@ -118,6 +119,7 @@
              * @param {[]} result
              */
             afterRestAPICallDataSuccessfully(result) {
+                this.promiseEnded('dropdown-api');
                 if (!Array.isArray(result) && !Array.isArray(result.data)) {
                     throw new TypeError(`[DROPDOWN-${this.control.name}] Wrong API-data format.`);
                 }
@@ -141,7 +143,7 @@
              * Show error for dropdown.
              */
             restAPICallErrorHandling(e) {
-                this.fetchingData = false;
+                this.promiseEnded('dropdown-api');
                 console.error(`[DROPDOWN-Control-${this.control.uniqueId}] Request API to get data failed.`, e);
             },
         },
