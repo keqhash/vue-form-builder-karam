@@ -12192,12 +12192,12 @@ var NumberControl_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var NumberControl = (NumberControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddc01e7c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DropdownControl.vue?vue&type=template&id=7ceb7a82&scoped=true&
-var DropdownControlvue_type_template_id_7ceb7a82_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('select',{key:_vm.listOptions.length,class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"multiple":_vm.control.multiple},on:{"change":function($event){return _vm.onChange($event, _vm.control.multiple)}}},[(_vm.control.placeholderText)?_c('option',{attrs:{"disabled":""},domProps:{"selected":!_vm.value || !_vm.value.length || !_vm.listOptions.length,"textContent":_vm._s(_vm.control.placeholderText)}}):_vm._e(),(!_vm.listOptions.length)?_c('option',{attrs:{"disabled":""}},[_vm._v("Getting Data...")]):_vm._e(),_vm._l((_vm.listOptions),function(optionObj){return _c('option',{key:optionObj.value,domProps:{"value":optionObj.value,"selected":_vm.value == optionObj.value || (Array.isArray(_vm.value) && _vm.value.indexOf(optionObj.value) > -1) ? 'selected' : '',"textContent":_vm._s(optionObj.text)}})})],2)}
-var DropdownControlvue_type_template_id_7ceb7a82_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddc01e7c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DropdownControl.vue?vue&type=template&id=ebfb3d9a&scoped=true&
+var DropdownControlvue_type_template_id_ebfb3d9a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('select',{key:_vm.listOptions.length,class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"multiple":_vm.control.multiple},on:{"change":function($event){return _vm.onChange($event, _vm.control.multiple)}}},[(_vm.control.placeholderText)?_c('option',{attrs:{"disabled":""},domProps:{"selected":!_vm.value || !_vm.value.length || !_vm.listOptions.length,"textContent":_vm._s(_vm.control.placeholderText)}}):_vm._e(),(!_vm.listOptions.length)?_c('option',{attrs:{"disabled":""}},[_vm._v("Getting Data...")]):_vm._e(),_vm._l((_vm.listOptions),function(optionObj){return _c('option',{key:optionObj.value,domProps:{"value":optionObj.value,"selected":_vm.value == optionObj.value || (Array.isArray(_vm.value) && _vm.value.indexOf(("" + (optionObj.value))) > -1) ? 'selected' : '',"textContent":_vm._s(optionObj.text)}})})],2)}
+var DropdownControlvue_type_template_id_ebfb3d9a_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/DropdownControl.vue?vue&type=template&id=7ceb7a82&scoped=true&
+// CONCATENATED MODULE: ./src/views/controls/DropdownControl.vue?vue&type=template&id=ebfb3d9a&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
@@ -12365,15 +12365,15 @@ var list_item_class_ListItem = function ListItem(value, text) {
     afterRestAPICallDataSuccessfully: function afterRestAPICallDataSuccessfully(result) {
       var _this = this;
 
-      if (!Array.isArray(result)) {
+      if (!Array.isArray(result) && !Array.isArray(result.data)) {
         throw new TypeError("[DROPDOWN-".concat(this.control.name, "] Wrong API-data format."));
       } // clear list
 
 
       this.listOptions = []; // traversal all list and add it into the list
 
-      result.forEach(function (optionObj) {
-        _this.listOptions.push(new list_item_class_ListItem(optionObj[_this.valueKey], optionObj[_this.textKey]));
+      (result.data || result).forEach(function (optionObj) {
+        _this.listOptions.push(new list_item_class_ListItem("".concat(optionObj[_this.valueKey]), optionObj[_this.textKey]));
       });
     },
 
@@ -12419,11 +12419,11 @@ var list_item_class_ListItem = function ListItem(value, text) {
 
 var DropdownControl_component = Object(componentNormalizer["a" /* default */])(
   controls_DropdownControlvue_type_script_lang_js_,
-  DropdownControlvue_type_template_id_7ceb7a82_scoped_true_render,
-  DropdownControlvue_type_template_id_7ceb7a82_scoped_true_staticRenderFns,
+  DropdownControlvue_type_template_id_ebfb3d9a_scoped_true_render,
+  DropdownControlvue_type_template_id_ebfb3d9a_scoped_true_staticRenderFns,
   false,
   null,
-  "7ceb7a82",
+  "ebfb3d9a",
   null
   
 )

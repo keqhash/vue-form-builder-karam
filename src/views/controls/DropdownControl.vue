@@ -21,7 +21,7 @@
                 :key="optionObj.value"
                 :value="optionObj.value"
                 v-text="optionObj.text"
-                :selected="value == optionObj.value || (Array.isArray(value) && value.indexOf(optionObj.value) > -1) ? 'selected' : ''"
+                :selected="value == optionObj.value || (Array.isArray(value) && value.indexOf(`${optionObj.value}`) > -1) ? 'selected' : ''"
         ></option>
     </select>
 </template>
@@ -118,7 +118,7 @@
              * @param {[]} result
              */
             afterRestAPICallDataSuccessfully(result) {
-                if (!Array.isArray(result)) {
+                if (!Array.isArray(result) && !Array.isArray(result.data)) {
                     throw new TypeError(`[DROPDOWN-${this.control.name}] Wrong API-data format.`);
                 }
 
@@ -126,10 +126,10 @@
                 this.listOptions = [];
 
                 // traversal all list and add it into the list
-                result.forEach(optionObj => {
+                (result.data || result).forEach(optionObj => {
                     this.listOptions.push(
                         new ListItem(
-                            optionObj[this.valueKey],
+                            `${optionObj[this.valueKey]}`,
                             optionObj[this.textKey]
                         )
                     );
