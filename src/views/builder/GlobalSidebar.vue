@@ -129,6 +129,14 @@
             // listen to render even
             this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.SIDEBAR.INJECT, this.updateBody)
 
+            const eventsToFlush = ['builder.sidebar.open'];
+
+            Object.keys(this.$formEvent._events).forEach((key) => {
+                if (eventsToFlush.includes(key) && this.$formEvent._events[key].length > 0) {
+                    this.$formEvent._events[key] = [];
+                }
+            });
+
             // listen to open
             this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.SIDEBAR.OPEN, this.open)
         }

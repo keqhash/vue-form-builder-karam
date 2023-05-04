@@ -9,6 +9,7 @@
             <a href="javascript:void(0)"
                :class="styles.LIST_GROUP.SINGLE_ITEM"
                v-for="(controlInfo, controlKey) in controlTypes"
+               :key="controlKey"
                v-show="!controlInfo.isHidden"
                @click="selectedControl(controlKey)">
 

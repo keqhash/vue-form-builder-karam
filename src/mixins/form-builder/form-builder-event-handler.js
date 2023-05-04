@@ -208,6 +208,26 @@ const FORM_BUILDER_EVENT_HANDLER = {
 
     created() {
         // section events
+
+        const eventsToFlush = [
+            'builder.control.create',
+             'builder.control.delete',
+             'builder.control.update',
+            'builder.row.create',
+            'builder.row.delete',
+            'builder.section.added_row',
+            'builder.section.delete',
+            'builder.section.push',
+            'builder.section.update',
+            'builder.sidebar.save_and_close',
+            'builder.sidebar.opened'
+        ];
+
+        Object.keys(this.$formEvent._events).forEach((key) => {
+            if (eventsToFlush.includes(key) && this.$formEvent._events[key].length > 0) {
+                this.$formEvent._events[key] = [];
+            }
+        });
         this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.SECTION.ADDED_ROW, this.sectionAndRowMapping)
         this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.SECTION.PUSH, this.sectionPushedUp)
         this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.SECTION.DELETE, this.sectionDelete)
