@@ -314,6 +314,7 @@ const CONTROL_DEFAULT_DATA = {
 
     'additionalFieldClass': '', // :class for <input> <select> ...
     'additionalLabelClass': '', // :class for the <label>
+    'additionalSubLabelClass': '', //:class for <small>
 
     'defaultValue': '',
 

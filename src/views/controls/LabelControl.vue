@@ -3,6 +3,7 @@
             :id="control.uniqueId"
             :for="control.forAttribute"
             :class="control.additionalLabelClass"
+            v-if="!control.isShowLabel"
             v-html="control.label"
     ></label>
 </template>

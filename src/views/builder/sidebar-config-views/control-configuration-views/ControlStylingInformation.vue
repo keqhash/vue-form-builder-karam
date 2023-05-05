@@ -25,6 +25,10 @@
             <label>Control-Label Additional Classes</label>
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.additionalLabelClass">
         </div>
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>Control-Sub Label Additional Classes</label>
+            <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.additionalSubLabelClass">
+        </div>
     </SidebarToggleableContainer>
 </template>
 

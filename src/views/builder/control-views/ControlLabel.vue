@@ -9,6 +9,7 @@
         <small
             v-if="control.subLabel"
             v-text="control.subLabel"
+            :class="[control.additionalSubLabelClass]"
         />
     </div>
 </template>
