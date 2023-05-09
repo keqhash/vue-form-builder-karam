@@ -211,8 +211,8 @@ const FORM_BUILDER_EVENT_HANDLER = {
 
         const eventsToFlush = [
             'builder.control.create',
-             'builder.control.delete',
-             'builder.control.update',
+            'builder.control.delete',
+            'builder.control.update',
             'builder.row.create',
             'builder.row.delete',
             'builder.section.added_row',
