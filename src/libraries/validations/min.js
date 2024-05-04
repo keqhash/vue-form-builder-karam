@@ -22,5 +22,5 @@ export default function minRule(fieldValue, constraintValue) {
     }
 
     // lastly, string
-    return fieldValue.length >= minVal
+    return (fieldValue || '').length >= minVal
 }
